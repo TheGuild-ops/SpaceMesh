@@ -1,3 +1,4 @@
+apt-get update && apt-get upgrade
 echo "Enter reward wallet"
 read wallet
 wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
