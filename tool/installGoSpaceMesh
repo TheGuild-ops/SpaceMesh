@@ -1,0 +1,41 @@
+echo "Enter reward wallet"
+read wallet
+wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+go version
+git clone https://github.com/spacemeshos/go-spacemesh
+cd go-spacemesh
+make install
+make build
+cd build  
+cp go-spacemesh /usr/local/bin/spacemesh
+
+echo `
+[Unit]
+Description=SpaceMech
+After=network-online.target
+
+[Service]
+User=root
+TimeoutStartSec=3
+
+ExecStart=/usr/local/bin/spacemesh \
+    --tcp-port 7152 \
+    --config /spacemesh//tn1.json \
+    -d /spacemesh//sm_data \
+    --coinbase $wallet \
+    --start-mining \
+    --post-datadir $HOME/spacemesh/post_data
+
+Restart=always
+RestartSec=10
+LimitNOFILE=65535
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
+`>/etc/systemd/system/spacemesh.service
+systemctl enable spacemesh
+systemctl start spacemesh
+journalctl -u spacemesh -f
