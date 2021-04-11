@@ -20,13 +20,7 @@ After=network-online.target
 User=root
 TimeoutStartSec=3
 
-ExecStart=/usr/local/bin/spacemesh \
-    --tcp-port 7152 \
-    --config /spacemesh//tn1.json \
-    -d /spacemesh//sm_data \
-    --coinbase $wallet \
-    --start-mining \
-    --post-datadir $HOME/spacemesh/post_data
+ExecStart=/usr/local/bin/spacemesh --tcp-port 7152 --config $HOME/spacemesh/tn1.json -d $HOME/spacemesh/sm_data --coinbase $wallet --start-mining --post-datadir $HOME/spacemesh/post_data
 
 Restart=always
 RestartSec=10
