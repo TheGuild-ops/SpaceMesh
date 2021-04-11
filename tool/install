@@ -1,0 +1,7 @@
+apt-get update && apt-get upgrade
+cd
+mkdir spacemesh
+cd spacemesh
+
+wget https://storage.googleapis.com/smapp/v0.1.13/ubuntu18_04/spacemesh_app_0.1.13_amd64.deb
+sudo dpkg -i spacemesh_app_0.1.13_amd64.deb
