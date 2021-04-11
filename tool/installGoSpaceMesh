@@ -10,7 +10,7 @@ make install
 make build
 cd build  
 cp go-spacemesh /usr/local/bin/spacemesh
-<<EOF > /etc/systemd/system/spacemesh.service
+cat <<EOF > /etc/systemd/system/spacemesh.service
 [Unit]
 Description=SpaceMech
 After=network-online.target
@@ -38,6 +38,6 @@ EOF
 systemctl daemon-reload
 systemctl enable spacemesh
 systemctl start spacemesh
-rm go1.16.3.linux-amd64.tar.gz
-rm installGoSpaceMesh
+rm go1.16.3.linux-amd64*
+rm installGoSpaceMesh*
 journalctl -u spacemesh -f
