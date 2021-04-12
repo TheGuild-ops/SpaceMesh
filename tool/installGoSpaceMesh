@@ -6,6 +6,8 @@ sudo apt install curl make clang pkg-config libssl-dev build-essential git jq no
 wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+cp /usr/local/go/bin/go /usr/local/bin/go
+rm go1.16.3.linux-amd64*
 go version
 
 ####Wallet#####
@@ -20,9 +22,7 @@ else
   echo $wallet >> $path/wallet
 fi
 
-
 git clone https://github.com/spacemeshos/go-spacemesh
-
 cd $path
 git pull
 make install
@@ -32,6 +32,8 @@ systemctl stop spacemesh
 cp go-spacemesh /usr/local/bin/spacemesh
 git clone https://github.com/spacemeshos/cli-wallet
 cd cli-wallet
+go get && go build
+make
 #####
 wget https://storage.googleapis.com/spacecraft-data/tweedlelite128-archive/config.json -O $path/tn1.json
 
