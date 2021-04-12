@@ -30,6 +30,7 @@ make build
 cd build  
 systemctl stop spacemesh
 cp go-spacemesh /usr/local/bin/spacemesh
+cd
 cd go-spacemesh
 git clone https://github.com/spacemeshos/cli-wallet
 cd cli-wallet
