@@ -30,7 +30,8 @@ make build
 cd build  
 systemctl stop spacemesh
 cp go-spacemesh /usr/local/bin/spacemesh
-
+git clone https://github.com/spacemeshos/cli-wallet
+cd cli-wallet
 #####
 wget https://storage.googleapis.com/spacecraft-data/tweedlelite128-archive/config.json -O $path/tn1.json
 
