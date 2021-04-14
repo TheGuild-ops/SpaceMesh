@@ -14,6 +14,7 @@ go version
 if [ -s $path/wallet ]
 then
   echo "Your rewar wallet is:"
+  wallet=$(cat $path/wallet)
   cat $path/wallet
   echo "if this wrong pls edit $path/wallet"
 else
@@ -39,7 +40,8 @@ make build-linux
 cp /root/go-spacemesh/cli-wallet/cli_wallet_linux_amd64 /usr/local/bin/cli-spacemesh
 #####
 wget https://storage.googleapis.com/spacecraft-data/tweedlelite128-archive/config.json -O $path/tn1.json
-
+rm -r $path/sm_data
+rm -r $path/post_data
 cat <<EOF > /etc/systemd/system/spacemesh.service
 [Unit]
 Description=SpaceMech
