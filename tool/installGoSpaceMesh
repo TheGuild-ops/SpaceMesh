@@ -23,8 +23,11 @@ else
   echo $wallet >> $path/wallet
 fi
 
+mkdir install 
+cd inatll 
+rm go-spacemesh
 git clone https://github.com/spacemeshos/go-spacemesh
-cd $path
+cd go-spacemesh
 git pull
 git checkout v0.1.30 
 make install
@@ -33,12 +36,12 @@ cd build
 systemctl stop spacemesh
 cp go-spacemesh /usr/local/bin/spacemesh
 cd
-cd go-spacemesh
+cd install
 git clone https://github.com/spacemeshos/cli-wallet
 cd cli-wallet
 go get && go build
 make build-linux
-cp /root/go-spacemesh/cli-wallet/cli_wallet_linux_amd64 /usr/local/bin/cli-spacemesh
+cp /root/inatll/cli-wallet/cli_wallet_linux_amd64 /usr/local/bin/cli-spacemesh
 #####
 wget https://storage.googleapis.com/spacecraft-data/tweedlelite128-archive/config.json -O $path/tn1.json
 rm -r $path/sm_data
