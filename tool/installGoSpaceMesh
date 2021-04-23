@@ -66,4 +66,4 @@ systemctl daemon-reload
 systemctl enable spacemesh
 systemctl start spacemesh
 
-journalctl -u spacemesh -f
+systemctl status spacemesh
